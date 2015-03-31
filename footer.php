@@ -1,5 +1,5 @@
-		</div><!-- /.wrapper -->
-		<footer><!-- df.base footer --></footer>
-		<?php wp_footer() ?>
-	</body>
-</html>
+<footer>
+	<!-- df-base footer -->
+</footer>
+
+<? require_once('partials/foot.php'); ?>
