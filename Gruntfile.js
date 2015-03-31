@@ -152,14 +152,14 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['jshint', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'watch']);
 
-	grunt.registerTask('setup', ['symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer']);
+	grunt.registerTask('setup', ['run-bower-install', 'symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer']);
 
 	// this task is run by bower automatically on postinstall...
 	grunt.registerTask('bowerrjs', ['bowerRequirejs']); 
 
 
 	// Run bower install
-	grunt.registerTask('bower-install', function() {
+	grunt.registerTask('run-bower-install', function() {
 		var done = this.async();
 		var bower = require('bower').commands;
 		bower.install().on('end', function(data) {
