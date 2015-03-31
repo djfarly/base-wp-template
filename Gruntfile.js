@@ -88,7 +88,7 @@ module.exports = function(grunt) {
 			production: {
 				options: {
 					name: 'main',
-					baseUrl: 'js',
+					baseUrl: '<%= pkg.srcPath %>/js',
 					mainConfigFile: '<%= pkg.srcPath %>/js/main.js',
 					out: '<%= pkg.destPath %>/js/main.js'
 				}
@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-	grunt.registerTask('default', ['requirejs', 'uglify', 'sass', 'autoprefixer', 'watch']);
+	grunt.registerTask('default', ['jshint', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'watch']);
 
 	grunt.registerTask('setup', ['symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer']);
 
@@ -171,5 +171,4 @@ module.exports = function(grunt) {
 			done();
 		});
 	});
-	
 };

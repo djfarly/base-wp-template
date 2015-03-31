@@ -7,7 +7,7 @@
 define([
     'jquery',
     'jquery-ui-widget',
-    'app/logger'
+    'app/logger',
     'app/header',
 ],
 function ($, widget, logger, header) {
