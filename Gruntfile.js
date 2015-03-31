@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 
 		// jshint javascript
 		jshint : {
-			all : ['<%= pkg.srcPath %>/js/**/*.js', '!<%= pkg.srcPath %>/js/modernizr.js', '!<%= pkg.srcPath %>/js/plugins/**/*.js'],
+			all : ['<%= pkg.srcPath %>/js/**/*.js', '!<%= pkg.srcPath %>/js/modernizr/*.js', '!<%= pkg.srcPath %>/js/plugins/**/*.js'],
 			options : {
 				browser: true,
 				curly: false,
