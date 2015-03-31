@@ -1,0 +1,17 @@
+/*
+ * Generated _placeholders.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * place all placeholder definitions here.
+ * for more complex groups of placeholders
+ * refer to layout/modules/placeholder.
+ */
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

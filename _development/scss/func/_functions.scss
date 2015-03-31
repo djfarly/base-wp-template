@@ -1,0 +1,14 @@
+/*
+ * Generated _functions.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * place all function definitions here.
+ */
+
+// **************************
+// this extracts the $key-param from the $this-map
+// **************************
+@function this($key) {
+ 	@return map-get($this, $key);
+}

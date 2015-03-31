@@ -1,0 +1,32 @@
+/*
+ * Generated _animation.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * prefix all varibales in here with 'animation-'
+ * please follow this naming conventions:
+ * $animation-time-* 	defines a time
+ * $animation-tfunc-* 	defines a timing function
+ * $animation-trans-* 	defines a complete transition statement
+ * 
+ * this is a varibale definition file.
+ * please use descriptive var names.
+ * do not define any actual styles in here.
+ */
+
+// time
+$animation-time-instant:		150ms;
+$animation-time-fast:			300ms;
+$animation-time-medium:			600ms;
+$animation-time-slow:			900ms;
+
+// timing functions
+$animation-tfunc-std:			ease-in-out;
+$animation-tfunc-bounce:		cubic-bezier(0.5, 1.25, 0.5, 1);
+$animation-tfunc-bounce-strong:	cubic-bezier(0.5, 1.5, 0.5, 1);
+
+// transitions
+$animation-trans-instant: 		$animation-time-instant $animation-tfunc-std;
+$animation-trans-fast: 			$animation-time-fast $animation-tfunc-std;
+$animation-trans-medium: 		$animation-time-medium $animation-tfunc-std;
+$animation-trans-slow: 			$animation-time-slow $animation-tfunc-std;

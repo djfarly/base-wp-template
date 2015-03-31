@@ -1,0 +1,49 @@
+/*
+ * Generated main.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * @import all files you want to be included
+ * inside your main.css file here.
+ * Don't place any styles in here directly.
+ */
+
+
+// **************************
+// Mixins & Functions
+// **************************
+@import 'func/functions',
+		'func/mixins',
+		'func/placeholders';
+
+// **************************
+// Global Variables
+// **************************
+@import 'vars/_vars';
+
+// **************************
+// Placeholder Modules (%)
+// **************************
+@import 'layout/modules/placeholder/basic-table';
+
+// **************************
+// CSS RESET STYLES
+// **************************
+@import 'layout/global/reset';
+
+// **************************
+// Fonts
+// **************************
+@import 'layout/global/fonts';
+
+// **************************
+// Basic and global styles
+// **************************
+@import 'layout/global/basic';
+
+// **************************
+// Modules
+// **************************
+
+// comment this line to exclude the demo-module
+@import 'layout/modules/module';

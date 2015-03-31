@@ -1,0 +1,23 @@
+/*
+ * Generated _color.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * prefix all varibales in here with 'color-'
+ * try to name colors by there usecase not by
+ * their actual contained color :)
+ * 
+ * this is a varibale definition file.
+ * please use descriptive var names.
+ * do not define any actual styles in here.
+ */
+
+$color-foreground: 	black;
+$color-background:	white;
+$color-brand:		hotpink;
+
+$color-rgbscheme: (
+	red: 	#f00,
+	green: 	#0f0,
+	blue: 	#00f,
+);

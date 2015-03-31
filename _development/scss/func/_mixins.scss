@@ -1,0 +1,60 @@
+/*
+ * Generated _mixins.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * place all mixin definitions here
+ */
+
+@mixin center($x: true, $y: true) {
+    position: absolute;
+
+    $yPos: 0;
+    $xPos: 0;
+
+    @if $x {
+        $xPos: -50%;
+        left: 50%;
+    }
+
+    @if $y {
+        top: 50%;
+        $yPos: -50%;
+    }
+
+    @include transform(translate3d($xPos, $yPos,0));
+}
+
+@mixin font-size($font-size, $line-height, $letter-spacing) {
+    font-size: $font-size;
+    letter-spacing: $font-size * $letter-spacing / 1000;
+    line-height: $line-height;
+}
+
+@mixin grabcursor() {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+@mixin background-image-retina($file, $type, $width, $height) {
+    background-image: url($file + '.' + $type);
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi), (min-resolution: 2dppx) {
+        & {
+            background-image: url($file + '@2x.' + $type);
+            background-size: $width $height;
+        }
+    }
+}
+
+$desktop-width: 1024px;
+
+@mixin for-tablet {
+    @media (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}

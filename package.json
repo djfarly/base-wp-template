@@ -1,0 +1,18 @@
+{
+  "name": "df.base wordpress template",
+  "srcPath": "_development",
+  "destPath": "assets",
+  "version": "0.0.0",
+  "devDependencies": {
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-autoprefixer": "^2.2.0",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-jshint": "^0.11",
+    "grunt-bower-requirejs": "^2.0.0",
+    "grunt": "^0.4.5",
+    "bower": "^1.x"
+  }
+}

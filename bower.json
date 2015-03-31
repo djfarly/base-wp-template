@@ -1,0 +1,10 @@
+{
+  "name": "df.base wordpress template",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "^2.0.0",
+    "jquery-ui": "^1.11.0",
+    "jquery.bem.gal": "djfarly/jquery-bem",
+    "requirejs": "~2.1.5"
+  }
+}

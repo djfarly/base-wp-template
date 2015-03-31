@@ -1,0 +1,6 @@
+{
+  "directory": "_development/js/plugins",
+  "scripts": {
+    "postinstall": "grunt bowerrjs"
+  }
+}

@@ -1,0 +1,68 @@
+/*
+ * Generated _basic-table.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * this is a placeholder module.
+ * it is definded just like a module,
+ * only the % makes a difference
+ * placeholder modules are imported very early,
+ * therefore they are avaible nearly everywhere
+ */
+
+$this: (
+	// Modulename
+	module:								basic-table,
+
+	border-color:						#e1e1e1,
+);
+
+
+
+%#{this(module)} {
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
+
+	&--border-top {
+		border-top: 1px solid this(border-color);
+	}
+
+	&--border-bottom {
+		border-bottom: 1px solid this(border-color);
+	}
+
+	&--border-left {
+		border-left: 1px solid this(border-color);
+	}
+
+	&--border-right {
+		border-right: 1px solid this(border-color);
+	}
+
+	&__row {
+		display: table-row;
+
+		&:last-child > * {
+			border-bottom: none;
+		}
+	}
+
+	&__heading,
+	&__cell {
+		display: table-cell;
+		border-bottom: 1px solid this(border-color);
+		padding: 15px 10px;
+		vertical-align: middle;
+	}
+
+	&__heading {
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}
+
+
+// unset this
+$this: null;
+

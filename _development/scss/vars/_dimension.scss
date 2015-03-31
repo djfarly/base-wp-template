@@ -1,0 +1,20 @@
+/*
+ * Generated _dimension.scss
+ * Dunckelfeld /_development/
+ * Jan Willem Henckel
+ * 
+ * prefix all varibales in here with 'dimension-'
+ * use this for all spatial dimension that are
+ * needed globally.
+ * 
+ * this is a varibale definition file.
+ * please use descriptive var names.
+ * do not define any actual styles in here.
+ */
+
+$dimension-header-height: 			50px;
+$dimension-header-spacing-bottom: 	20px;
+
+$dimension-content-offset-top:		$dimension-header-height + $dimension-header-spacing-bottom;
+
+$dimension-content-margin: 			0 auto;
