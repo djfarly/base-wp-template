@@ -7,9 +7,10 @@
 define([
     'jquery',
     'jquery-ui-widget',
+    'app/logger'
     'app/header',
 ],
-function ($, widget, header) {
+function ($, widget, logger, header) {
     return widget('app', {
         options: {
             applicationName: '<%= projectName %>'
@@ -17,6 +18,10 @@ function ($, widget, header) {
      
         _create: function () {
             $(this._loadInitialModules());
+
+            if(!$('body').hasClass('debugmode')) {
+                logger.disableLogger();
+            }
         },
 
         _loadInitialModules: function () {

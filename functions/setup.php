@@ -30,9 +30,9 @@ remove_action('wp_head', 'adjacent_posts_rel_link');
 // do not show admin bar, when logged in
 add_filter('show_admin_bar', '__return_false');
 
-// add debug class to body
+// add debug class to body - this enables the console
 if ($development)
 	add_filter('body_class', function ($classes = '') {
-		$classes[] = 'debug';
+		$classes[] = 'debugmode';
 		return $classes;
 	});
