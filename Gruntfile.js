@@ -125,6 +125,17 @@ module.exports = function(grunt) {
 					livereload: true
 				},
 			},
+		},
+
+		// create a symlink for the theme folder for easy access
+		symlink: {
+		  options: {
+		    overwrite: false
+		  },
+		  explicit: {
+		    src: './',
+		    dest: '../../../theme-folder'
+		  }
 		}
 	});
 
@@ -134,16 +145,19 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-symlink');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
 	grunt.registerTask('default', ['requirejs', 'uglify', 'sass', 'autoprefixer', 'watch']);
 
+	grunt.registerTask('setup', ['symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer']);
+
 	// this task is run by bower automatically on postinstall...
 	grunt.registerTask('bowerrjs', ['bowerRequirejs']); 
 
-	
+
 	// Run bower install
 	grunt.registerTask('bower-install', function() {
 		var done = this.async();
