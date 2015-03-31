@@ -1,5 +1,5 @@
 {
-  "name": "df.base wordpress template",
+  "name": "base-wp-template",
   "version": "0.0.0",
   "dependencies": {
     "jquery": "^2.0.0",
