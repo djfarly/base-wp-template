@@ -13,7 +13,7 @@ define([
 function ($, widget, logger, header) {
     return widget('app', {
         options: {
-            applicationName: '<%= projectName %>'
+            applicationName: "<%= conf.get('themeDir') %>"
         },
      
         _create: function () {
