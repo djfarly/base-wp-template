@@ -12,7 +12,7 @@
 
 
 require.config({
-	baseUrl: "js",
+	baseUrl: "<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/_development/js",
 	paths: {
 		jquery: "plugins/jquery/dist/jquery",
 		"jquery.bem.gal": "plugins/jquery.bem.gal/jquery.bem",
