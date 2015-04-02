@@ -15,5 +15,7 @@
  */
 $development = true;
 
-foreach(glob(dirname(__FILE__).'functions/*.php') as $file)
-	require_once($file);
+$path = dirname(__FILE__).'/functions';
+$files = glob($path."/*.php");
+foreach ($files as $filename)
+   include $filename;
