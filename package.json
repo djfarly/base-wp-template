@@ -1,5 +1,7 @@
 {
   "name": "base-wp-template",
+  "description": "a basic wordpress theme",
+  "repository": "djfarly/base-wp-template",
   "srcPath": "_development",
   "destPath": "assets",
   "version": "0.0.5",
