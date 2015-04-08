@@ -6,13 +6,17 @@ Intended to be installed through YeoPress.
 
 Make sure yo and generator-wordpress are installed.
 
-$ npm install -g yo generator-wordpress
+```bash
+npm install -g yo generator-wordpress
+```
 
 This theme also needs sass.
 
 Setup your database and virtual hosts prior to starting the YeoPress installer.
 
-$ yo wordpress
+```bash
+yo wordpress
+```
 
 "Custom Theme"
 > Yes
@@ -34,9 +38,11 @@ $ yo wordpress
 
 Finish the wordpress installation inside your browser.
 
-Start the watch task:
+Start the watch task (the theme-folder symlink is created automatically):
 
-$ cd theme-folder
-$ grunt
+```bash
+cd theme-folder
+grunt
+```
 
 Uninstall the 102 other themes and choose this theme.
