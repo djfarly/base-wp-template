@@ -1,7 +1,7 @@
 <?php
 /*
  * wordpress functions.php
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  */
 

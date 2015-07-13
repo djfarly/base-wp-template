@@ -1,4 +1,4 @@
-# Dunckelfeld Base Wordpress Template
+# Basic Wordpress Theme
 
 Intended to be installed through YeoPress.
 
