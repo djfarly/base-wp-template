@@ -1,9 +1,9 @@
 /*
  * Generated _dimension.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * prefix all varibales in here with 'dimension-'
+ * prefix all varibales in here with 'dimension--'
  * use this for all spatial dimension that are
  * needed globally.
  * 
@@ -12,9 +12,9 @@
  * do not define any actual styles in here.
  */
 
-$dimension-header-height: 			50px;
-$dimension-header-spacing-bottom: 	20px;
+$dimension--header-height: 			50px;
+$dimension--header-spacing-bottom: 	20px;
 
-$dimension-content-offset-top:		$dimension-header-height + $dimension-header-spacing-bottom;
+$dimension--content-offset-top:		$dimension--header-height + $dimension--header-spacing-bottom;
 
-$dimension-content-margin: 			0 auto;
+$dimension--content-margin: 		0 auto;

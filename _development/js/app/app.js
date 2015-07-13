@@ -1,12 +1,11 @@
 /*
  * <%= conf.get('themeDir') %> bootstrap process
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %> /_development/
  * Jan Willem Henckel
  */
 
 define([
     'jquery',
-    'jquery-ui-widget',
     'app/logger',
     'app/header',
 ],

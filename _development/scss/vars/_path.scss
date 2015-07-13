@@ -1,9 +1,9 @@
 /*
  * Generated _path.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * prefix all varibales in here with 'path-'
+ * prefix all varibales in here with 'path--'
  * keep your path definitions in here e.g. for fonts
  * 
  * this is a varibale definition file.
@@ -12,5 +12,5 @@
  */
 
 // theme path
-$path-theme: '/<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/';
-$path-images: '/<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/images/';
+$path--theme: '/<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/';
+$path--images: '/<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/images/';

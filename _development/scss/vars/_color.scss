@@ -1,9 +1,9 @@
 /*
  * Generated _color.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * prefix all varibales in here with 'color-'
+ * prefix all varibales in here with 'color--'
  * try to name colors by there usecase not by
  * their actual contained color :)
  * 
@@ -12,11 +12,11 @@
  * do not define any actual styles in here.
  */
 
-$color-foreground: 	black;
-$color-background:	white;
-$color-brand:		hotpink;
+$color--foreground: 	black;
+$color--background:		white;
+$color--brand:			hotpink;
 
-$color-rgbscheme: (
+$color--rgbscheme: (
 	red: 	#f00,
 	green: 	#0f0,
 	blue: 	#00f,

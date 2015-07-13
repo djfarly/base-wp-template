@@ -1,6 +1,6 @@
 /*
  * Generated _misc.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
  * place all varibales here that do not fit
@@ -11,4 +11,4 @@
  * do not define any actual styles in here.
  */
 
-$text-hello: "Hello World";
+$misc--hello: "Hello World";

@@ -1,0 +1,84 @@
+/*
+ * Generated _maps.scss
+ * <%= conf.get('themeDir') %>
+ * Jan Willem Henckel
+ * 
+ * Map functions
+ */
+
+@function get-distinct-keys-in-maps($maps) {
+  $list: ();
+  @each $map in $maps {
+    $list: join($list, map-keys-sane($map));
+  }
+  @return remove-duplicates($list);
+}
+
+@function map-keys-sane($map, $default: 0) {
+  @if type-of($map) == map {
+    @return map-keys($map);
+  } @else {
+    @return ($default);
+  }
+}
+
+
+/// Quick sort
+/// @author Sam Richards
+/// @param {Map} $map - map to sort
+/// @return {Map}
+@function map-ksort($map) {
+  $less:  ();
+  $equal: ();
+  $large: ();
+
+  $keys: map-keys($map);
+
+
+  @if length($keys) > 1 {
+    $seed: nth($keys, ceil(length($keys) / 2));
+
+    @each $key, $value in $map {
+      @if $key == $seed {
+        $equal: map-merge($equal, ($key: $value));
+      } @else if $key < $seed {
+        $less: map-merge($less, ($key: $value));
+      } @else {
+        $large: map-merge($large, ($key: $value));
+      }
+    }
+
+    @return map-merge(map-merge(map-ksort($less), $equal), map-ksort($large));
+  }
+
+  @return $map;
+}
+
+@function map-get-next($map, $key, $direction: min) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	$distances: ();
+	@each $map-key in map-keys($map) {
+		$map-key-distance: 0;
+		@if $direction == min {
+			$map-key-distance: ($key - $map-key) / $key;
+		} @else if $direction == max {
+			$map-key-distance: ($map-key - $key) / $key;
+		} @else {
+			$map-key-distance: abs(($key - $map-key) / $key);
+		}
+
+		@if ($map-key-distance < 0) {
+			$map-key-distance: ($map-key-distance * -1) + 1;
+		}
+
+		$distances: map-merge($distances, ($map-key-distance: $map-key));
+	}
+
+	$closest-key: map-get($distances, min(map-keys($distances)...));
+	//@debug "Closest key for #{$key} in direction '#{$direction}' for map #{inspect($map)} is: #{$closest-key}";
+	@return map-get($map, $closest-key);
+}
+

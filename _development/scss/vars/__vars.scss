@@ -1,6 +1,6 @@
 /*
  * Generated __vars.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
  * @import all variable definition files in here.
@@ -9,6 +9,7 @@
  */
 
 @import 'animation',
+		'screen',
 		'color',
 		'dimension',
 		'font',

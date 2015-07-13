@@ -1,7 +1,7 @@
 /*
  * <%= conf.get('themeDir') %> main configuration
  * kicks off bootstrapping
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %> /_development/
  * Jan Willem Henckel
  */
 
@@ -14,13 +14,15 @@
 require.config({
 	baseUrl: "<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/_development/js",
 	paths: {
-		jquery: "plugins/jquery/dist/jquery",
-		"jquery.bem.gal": "plugins/jquery.bem.gal/jquery.bem",
-		requirejs: "plugins/requirejs/require",
-		"jquery-ui": "plugins/jquery-ui/jquery-ui",
-		"jquery-ui-widget": "plugins/jquery-ui/ui/widget"
+		jquery: "../components/jquery/dist/jquery",
+		"jquery.bem.gal": "../components/jquery.bem.gal/jquery.bem",
+		requirejs: "../components/requirejs/require",
+		"jquery-ui": "../components/jquery-ui/jquery-ui",
+		"jquery-ui-widget": "../components/jquery-ui/ui/widget"
 	},
-	packages: []
+	packages: [
+
+	]
 });
 
 // bootstrap application

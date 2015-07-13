@@ -1,9 +1,9 @@
 /*
  * Generated _font.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * prefix all varibales in here with 'font-'
+ * prefix all varibales in here with 'font--'
  * define your font-fallback chains here
  * 
  * this is a varibale definition file.
@@ -11,5 +11,5 @@
  * do not define any actual styles in here.
  */
 
-$font-bodycopy:		Tahoma, Helvetica, Arial, Verdana, sans-serif;
-$font-headline:		$font-bodycopy;
+$font--bodycopy:		Tahoma, Helvetica, Arial, Verdana, sans-serif;
+$font--headline:		$font--bodycopy;

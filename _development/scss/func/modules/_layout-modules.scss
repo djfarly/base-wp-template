@@ -1,17 +1,20 @@
 /*
- * Generated _module.scss
+ * Generated _layout-modules.scss
  * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * this is a demo module.
- * you might wan't to keep it as a template.
- * this module is not imported in the main.scss.
- * 
- * this is a module definition file.
- * global varibale use is only allowed inside
- * the $this map definition.
- * do not forget to unset $this.
+ * Layout Module this()-function
  */
+
+// **************************
+// this extracts the $key-param from the $this-map
+// **************************
+$this: () !default;
+@function this($key) {
+ 	@return map-get($this, $key);
+}
+
+/* DEMO MODULE
 
 $this: (
 	// Modulename
@@ -40,3 +43,4 @@ $this: (
 
 // unset this
 $this: null;
+*/

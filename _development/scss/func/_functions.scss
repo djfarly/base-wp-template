@@ -1,14 +1,16 @@
 /*
  * Generated _functions.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
- * place all function definitions here.
+ * place/include all function definitions here.
  */
 
-// **************************
-// this extracts the $key-param from the $this-map
-// **************************
-@function this($key) {
- 	@return map-get($this, $key);
-}
+// libs
+@import 'lib/lists',
+		'lib/maps',
+		'lib/math';
+
+// modules
+@import 'modules/screen',
+		'modules/layout-modules';

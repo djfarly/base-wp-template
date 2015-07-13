@@ -1,6 +1,6 @@
 /*
- * df logger module
- * Dunckelfeld /_development/
+ * logger module
+ * <%= conf.get('themeDir') %> /_development/
  * Jan Willem Henckel
  */
 

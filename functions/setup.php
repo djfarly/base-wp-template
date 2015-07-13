@@ -16,8 +16,27 @@ if ($development) {
 	wp_enqueue_script('livereload');
 }
 
-// enqueue stylesheet
-wp_enqueue_style('main', get_bloginfo('template_url') . ($development ? 'assets/css/main.css' : 'assets/css/main.min.css'));
+if (!is_admin()) { 
+
+	if(file_exists(dirname(__FILE__) . '/../assets/css/main' . ($development ? '.css' : '.min.css'))) {
+		wp_enqueue_style('main', get_bloginfo('template_url') . ($development ? '/assets/css/main.css' : '/assets/css/main.min.css'));
+	}
+
+	if(file_exists($criticalPath = dirname(__FILE__) . '/../assets/css/critical' . ($development ? '.css' : '.min.css'))) {
+		add_action('wp_head', function () {
+			echo '<style type="text/css">';
+			echo file_get_contents($criticalPath);
+			echo '</style>';
+		});
+	}
+
+	// register and enqueue livereload
+	if ($development) {
+		wp_register_script('livereload', 'http://dev.ravio:35729/livereload.js?snipver=1', null, false, true);
+		wp_enqueue_script('livereload');
+	}
+}
+
 
 // cleanup head
 remove_action('wp_head', 'adjacent_posts_rel_link');
@@ -42,3 +61,35 @@ if ($development)
 		$classes[] = 'debugmode';
 		return $classes;
 	});
+
+
+// WPML Setup
+// define('ICL_DONT_LOAD_NAVIGATION_CSS', true);
+// define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);
+// define('ICL_DONT_LOAD_LANGUAGES_JS', true);
+
+
+// Disable Emojis
+function disable_wp_emojicons() {
+  // all actions related to emojis
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+  // filter to remove TinyMCE emojis
+  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+}
+add_action( 'init', 'disable_wp_emojicons' );
+
+
+function disable_emojicons_tinymce( $plugins ) {
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
+}

@@ -1,0 +1,126 @@
+/*
+ * Generated _screen.scss
+ * <%= conf.get('themeDir') %>
+ * Jan Willem Henckel
+ * 
+ * Screen Module
+ */
+
+$screen: (
+  xs:       480,
+  sm:       768,
+  md:       992,
+  lg:       1200
+) !default;
+$screen--unit: px !default;
+
+
+@mixin set($property, $values, $screen-unit: $screen--unit) {
+    @if type-of($values) == map {
+    		$values: map-ksort(screen-map($values));
+        @each $screen-size, $value in $values {
+            //@warn "Setting #{$property}-value for breakpoint #{$screen-size} to #{$value}";
+            //$breakpoint: breakpoint($screen-size);
+            @if $screen-size == 0 {
+                #{$property}: $value;
+            } @else {
+                @media (min-width: $screen-size#{$screen-unit}) {
+                    #{$property}: $value;
+                }     
+            }
+        }
+    } @else {
+        #{$property}: $values;
+    }
+}
+
+/*
+ * @param   mixed $size-name a valid size name or number (unitless will be interpreted as px)
+ * @global  $screen
+ * @return  a size value based on an $size-name or null
+ */
+@function screen($size-name) {
+    // if $size-name is a valid screen-size, return it
+    @if type-of($size-name) == number {
+        @if unitless($size-name) {
+            @return $size-name;
+        }
+        @return strip-units($size-name);
+    } 
+
+    // if $size-name name is a valid screen size name, return it's value
+    $screen-value: map-get($screen, $size-name);
+    @if $screen-value {
+        @return strip-units($screen-value);
+    }
+
+    // default to 0
+    @return 0;
+}
+
+/*
+ * @param   list $maps - a list of maps
+ * @return  a list of maps in wich screen() has been applied to all map keys
+ */
+@function screen-maps($maps) {
+    $new-maps: ();
+    @each $map in $maps {
+        @if type-of($map) != map {
+            $new-maps: append($new-maps, (0: $map)); 
+        } @else {
+            $new-maps: append($new-maps, screen-map($map)); 
+        }
+    }
+    @return $new-maps;
+}
+
+/*
+ * @param   map $map
+ * @return  a map in wich screen() has been applied to all keys
+ */
+@function screen-map($map) {
+    $new-map: ();
+    @each $key, $value in $map {
+        $new-map: map-merge($new-map, (screen($key): $value));
+    }
+    @return $new-map;
+}
+
+/*
+ * @param   function $calc-callback a function that takes x values a parameters
+ * @param   map... $maps... multiple (x) maps
+ * @return  a single map containing 
+ */
+@function calc-maps($calc-callback, $maps...) {
+    $maps: screen-maps($maps);
+    @debug "maps: #{inspect($maps)}";
+  $sizes: get-distinct-keys-in-maps($maps);
+    @debug "sizes: #{$sizes}";
+    
+  $result: ();
+  @each $size in $sizes {
+    $size-params: get-params-for-size($size, $maps);
+    @debug "size: #{$size} - #{$size-params}";
+    $result: map-merge($result, ($size: call($calc-callback, $size-params...)));
+  }
+
+  @return $result;
+}
+
+@function get-params-for-size($size, $in-maps) {
+  $param-list: ();
+
+  @each $map in $in-maps {
+    @if type-of($map) == map {
+      @if length(map-keys($map)) == 1 {
+        $param-list: append($param-list, map-get-next($map, 0, min));
+      } @else {
+        $param-list: append($param-list, map-get-next($map, $size, min));
+      }
+    } @else {
+      $param-list: append($param-list, $map);
+    }
+  }
+
+  @return $param-list;
+}

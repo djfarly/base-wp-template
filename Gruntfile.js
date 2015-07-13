@@ -22,36 +22,41 @@ module.exports = function(grunt) {
 					dest: '<%= pkg.destPath %>/css',
 					ext:  '.css'
 				}]
-			},
-			compressed: {
-				options: {
-					style: 'compressed',
-					sourcemap: 'none'
-				},
-				files: [{
-					expand: true,
-					cwd:  '<%= pkg.srcPath %>/scss',
-					src:  ['*.scss'],
-					dest: '<%= pkg.destPath %>/css',
-					ext:  '.min.css'
-				}]
 			}
 		},
 
 		autoprefixer: {
 			options: {
 				browsers: [
-					'last 2 versions',
-					'ie >= 9'
+					'last 2 versions'
 				]
 			},
-			css: {
+			compiledcss: {
 				expand: true,
 				flatten: true,
 				src:  '<%= pkg.destPath %>/css/*.css',
 				dest: '<%= pkg.destPath %>/css/'
 			}
 		},
+
+		// combine media queries
+		cssmin: {
+			options: {
+    			roundingPrecision: 2,
+    			//enable semantic merging for bem-like css structures
+    			//semanticMerging: true
+			},
+			compiledprefixedcss: {
+				files: [{
+					expand: true,
+					cwd: '<%= pkg.destPath %>/css',
+					src: ['*.css', '!*.min.css'],
+					dest: '<%= pkg.destPath %>/css',
+					ext: '.min.css'
+				}]
+			}
+		},
+
 
 		// jshint javascript
 		jshint : {
@@ -73,8 +78,11 @@ module.exports = function(grunt) {
 
 		// Uglify takes care of the require js source
 		uglify: {
+			options: {
+				screwIE8: true
+			},
 			require: {
-				src:  '<%= pkg.srcPath %>/js/plugins/requirejs/require.js',
+				src:  '<%= pkg.srcPath %>/components/requirejs/require.js',
 				dest: '<%= pkg.destPath %>/js/require.min.js'
 			},
 			modernizr: {
@@ -112,8 +120,8 @@ module.exports = function(grunt) {
 				},
 			},
 			css: {
-				files: ['<%= pkg.srcPath %>/sass/**/*.scss'],
-				tasks: ['sass', 'autoprefixer'],
+				files: ['<%= pkg.srcPath %>/scss/**/*.scss'],
+				tasks: ['sass', 'autoprefixer', 'cssmin'],
 				options: {
 					spawn: false,
 					livereload: true
@@ -142,6 +150,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-bower-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-sass');
@@ -150,9 +159,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-	grunt.registerTask('default', ['jshint', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'watch']);
+	grunt.registerTask('default', ['jshint', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'cssmin', 'watch']);
 
-	grunt.registerTask('setup', ['run-bower-install', 'symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer']);
+	grunt.registerTask('setup', ['run-bower-install', 'symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'cssmin']);
 
 	// this task is run by bower automatically on postinstall...
 	grunt.registerTask('bowerrjs', ['bowerRequirejs']); 

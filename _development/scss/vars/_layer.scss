@@ -1,6 +1,6 @@
 /*
  * Generated _layer.scss
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %>
  * Jan Willem Henckel
  * 
  * prefix all varibales in here with 'layer-'
@@ -11,8 +11,8 @@
  * do not define any actual styles in here.
  */
 
-$layer-overlay:				10;
-$layer-header:				4;
-$layer-navigation: 			3;
-$layer-interface-overlay:	2;
-$layer-base: 				1;
+$layer--overlay:				10;
+$layer--header:					4;
+$layer--navigation: 			3;
+$layer--interface-overlay:		2;
+$layer--base: 					1;

@@ -31,7 +31,7 @@ yo wordpress
 > djfarly
 
 "repo"
-> base-wp-template
+> wp-theme
 
 "branch"
 > master

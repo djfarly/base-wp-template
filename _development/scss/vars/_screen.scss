@@ -1,0 +1,40 @@
+/*
+ * Generated _screen.scss
+ * <%= conf.get('themeDir') %>
+ * Jan Willem Henckel
+ * 
+ * Variables are used by the screen module functions
+ * 
+ * Consider following strict mobile first strategies.
+ *
+ * this is a varibale definition file.
+ * please use descriptive var names.
+ * do not define any actual styles in here.
+ */
+
+$screen: (
+  xs:    	480,
+  sm:   	768,
+  md:    	992,
+  lg:  	  	1200
+);
+$screen--unit: px;
+
+
+// Uncomment these for Bootstrap-Sass compatibility
+// //** Deprecated `$screen-xs` as of v3.0.1
+// $screen-xs:                  map-get($screen, 'xs');
+// //** Deprecated `$screen-xs-min` as of v3.2.0
+// $screen-xs-min:              $screen-xs;
+// // Small screen / tablet
+// //** Deprecated `$screen-sm` as of v3.0.1
+// $screen-sm:                  map-get($screen, 'sm');
+// $screen-sm-min:              $screen-sm !default;
+// // Medium screen / desktop
+// //** Deprecated `$screen-md` as of v3.0.1
+// $screen-md:                  map-get($screen, 'md');
+// $screen-md-min:              $screen-md !default;
+// // Large screen / wide desktop
+// //** Deprecated `$screen-lg` as of v3.0.1
+// $screen-lg:                  map-get($screen, 'lg');
+// $screen-lg-min:              $screen-lg !default;

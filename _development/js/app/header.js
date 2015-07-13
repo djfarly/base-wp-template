@@ -1,6 +1,6 @@
 /*
  * <%= conf.get('themeDir') %> header module
- * Dunckelfeld /_development/
+ * <%= conf.get('themeDir') %> /_development/
  * Jan Willem Henckel
  */
 
