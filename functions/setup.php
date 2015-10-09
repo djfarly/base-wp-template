@@ -1,41 +1,17 @@
-<?
-// load require js into footer
-add_action('wp_footer', function () use (&$development) {
-	$dataMain = $development ? '_development/js/main' : 'assets/js/main';
-	$requirejs = 'assets/js/require.min.js';
-	echo '<script type="text/javascript" data-main="'.$dataMain.'" src="'.$requirejs.'"></script>';
-}, 19); // priority 19 triggers just before enqueue_scripts
+<?php
 
-// register and enqueue modernizr
-wp_register_script('modernizr', get_bloginfo('template_url') . 'assets/js/modernizr.js');
-wp_enqueue_script('modernizr');
+// Theme Scripts
+$theme->registerScript(['named' => 'main', 'withDependencies' => []]); // example dependencies ['jquery', 'd3']
+$theme->enqueueScript(['named' => 'main']);
 
-// register and enqueue livereload
-if ($development) {
-	wp_register_script('livereload', '<%= conf.get('url') %>:35729/livereload.js?snipver=1', null, false, true);
-	wp_enqueue_script('livereload');
-}
+$theme->registerScript(['named' => 'livereload', 'fromExternalPath' => 'http://dev.ravio:35729/livereload.js?snipver=1']);
+if ($development) $theme->enqueueScript(['named' => 'livereload']);
+	
+// Theme Styles
+$theme->enqueueStyle(['named' => 'main');
 
-if (!is_admin()) { 
-
-	if(file_exists(dirname(__FILE__) . '/../assets/css/main' . ($development ? '.css' : '.min.css'))) {
-		wp_enqueue_style('main', get_bloginfo('template_url') . ($development ? '/assets/css/main.css' : '/assets/css/main.min.css'));
-	}
-
-	if(file_exists($criticalPath = dirname(__FILE__) . '/../assets/css/critical' . ($development ? '.css' : '.min.css'))) {
-		add_action('wp_head', function () {
-			echo '<style type="text/css">';
-			echo file_get_contents($criticalPath);
-			echo '</style>';
-		});
-	}
-
-	// register and enqueue livereload
-	if ($development) {
-		wp_register_script('livereload', 'http://dev.ravio:35729/livereload.js?snipver=1', null, false, true);
-		wp_enqueue_script('livereload');
-	}
-}
+// Are there any critical styles to inline?
+$theme->inlineStyle(['named' => 'critical');
 
 
 // cleanup head
@@ -86,7 +62,7 @@ function disable_wp_emojicons() {
 add_action( 'init', 'disable_wp_emojicons' );
 
 
-function disable_emojicons_tinymce( $plugins ) {
+function disable_emojicons_tinymce($plugins) {
   if ( is_array( $plugins ) ) {
     return array_diff( $plugins, array( 'wpemoji' ) );
   } else {

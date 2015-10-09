@@ -76,37 +76,22 @@ module.exports = function(grunt) {
 			}
 		},
 
+		browserify: {
+			dist: {
+				files: {
+					'<%= pkg.destPath %>/js/main.js': ['<%= pkg.srcPath %>/js/main.js']
+				}
+			}
+		},
+
 		// Uglify takes care of the require js source
 		uglify: {
 			options: {
 				screwIE8: true
 			},
 			require: {
-				src:  '<%= pkg.srcPath %>/components/requirejs/require.js',
-				dest: '<%= pkg.destPath %>/js/require.min.js'
-			},
-			modernizr: {
-				src:  '<%= pkg.srcPath %>/js/modernizr/modernizr.js',
-				dest: '<%= pkg.destPath %>/js/modernizr.min.js'
-			},
-		},
-
-		// Require config
-		requirejs: {
-			production: {
-				options: {
-					name: 'main',
-					baseUrl: '<%= pkg.srcPath %>/js',
-					mainConfigFile: '<%= pkg.srcPath %>/js/main.js',
-					out: '<%= pkg.destPath %>/js/main.js'
-				}
-			}
-		},
-
-		// Bower task sets up require config
-		bowerRequirejs: {
-			all: {
-				rjsConfig: '<%= pkg.srcPath %>/js/main.js'
+				src:  '<%= pkg.destPath %>/js/main.js',
+				dest: '<%= pkg.destPath %>/js/main.min.js'
 			}
 		},
 
@@ -149,6 +134,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-bower-requirejs');
+	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -159,12 +145,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-	grunt.registerTask('default', ['jshint', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'cssmin', 'watch']);
+	grunt.registerTask('build-js', ['jshint', 'browserify', 'uglify']);
+	grunt.registerTask('build-css', ['sass', 'autoprefixer', 'cssmin']);
 
-	grunt.registerTask('setup', ['run-bower-install', 'symlink', 'requirejs', 'uglify', 'sass', 'autoprefixer', 'cssmin']);
-
-	// this task is run by bower automatically on postinstall...
-	grunt.registerTask('bowerrjs', ['bowerRequirejs']); 
+	grunt.registerTask('default', ['build-js', 'build-css',  'watch']);
+	grunt.registerTask('setup', ['run-bower-install', 'symlink', 'build-js', 'build-css']);
 
 
 	// Run bower install

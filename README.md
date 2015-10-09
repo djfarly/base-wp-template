@@ -1,6 +1,6 @@
 # Basic Wordpress Theme
 
-Intended to be installed through YeoPress.
+This Wordpress theme is intended to be installed through YeoPress.
 
 ## Setup
 

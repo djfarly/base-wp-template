@@ -9,6 +9,12 @@
  */
 
 
+
+// **************************
+// Import dependencies
+// **************************
+@import '../components/sass-blocks/sass-blocks',
+
 // **************************
 // Mixins & Functions
 // **************************
@@ -22,9 +28,10 @@
 @import 'vars/_vars';
 
 // **************************
-// Placeholder Modules (%)
+// Placeholder Blocks (%)
 // **************************
-@import 'layout/modules/placeholder/basic-table';
+// uncomment this line to include the demo-Block
+// @import 'layout/blocks/placeholder/basic-table';
 
 // **************************
 // CSS RESET STYLES
@@ -42,8 +49,8 @@
 @import 'layout/global/basic';
 
 // **************************
-// Modules
+// Blocks
 // **************************
 
 // uncomment this line to include the demo-module
-// @import 'layout/modules/module';
+// @import 'layout/blocks/module';

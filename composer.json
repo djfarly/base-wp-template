@@ -1,0 +1,12 @@
+{
+    "name": "<%= conf.get('themeDir') %>/<%= conf.get('themeDir') %>",
+    "description": "",
+    "require": {
+    },
+    "authors": [
+        {
+            "name": "Author",
+            "email": "author@<%= conf.get('themeDir') %>"
+        }
+    ]
+}

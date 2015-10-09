@@ -1,6 +1,3 @@
 {
-  "directory": "_development/components",
-  "scripts": {
-    "postinstall": "grunt bowerrjs"
-  }
+  "directory": "_development/components"
 }

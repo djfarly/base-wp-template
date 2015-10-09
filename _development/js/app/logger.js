@@ -4,7 +4,7 @@
  * Jan Willem Henckel
  */
 
-define(function () {
+module.exports = (function () {
 	var oldConsoleLog = null;
 	var pub = {};
 
@@ -25,6 +25,5 @@ define(function () {
             window['console']['log'] = function() {};
         }
 	};
-
 	return pub;
-});
+})();
