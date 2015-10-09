@@ -2,4 +2,4 @@
 	<!-- df-base footer -->
 </footer>
 
-<? require_once('partials/foot.php'); ?>
+<?php require_once('partials/foot.php'); ?>
