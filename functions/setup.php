@@ -8,10 +8,10 @@ $theme->registerScript(['named' => 'livereload', 'fromExternalPath' => 'http://d
 if ($development) $theme->enqueueScript(['named' => 'livereload']);
 	
 // Theme Styles
-$theme->enqueueStyle(['named' => 'main');
+$theme->enqueueStyle(['named' => 'main']);
 
 // Are there any critical styles to inline?
-$theme->inlineStyle(['named' => 'critical');
+// $theme->inlineStyle(['named' => 'critical']);
 
 
 // cleanup head
