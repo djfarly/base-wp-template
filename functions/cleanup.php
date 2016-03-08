@@ -1,19 +1,5 @@
 <?php
 
-// Theme Scripts
-$theme->registerScript(['named' => 'main', 'withDependencies' => []]); // example dependencies ['jquery', 'd3']
-$theme->enqueueScript(['named' => 'main']);
-
-$theme->registerScript(['named' => 'livereload', 'fromExternalPath' => 'http://dev.ravio:35729/livereload.js?snipver=1']);
-if ($development) $theme->enqueueScript(['named' => 'livereload']);
-	
-// Theme Styles
-$theme->enqueueStyle(['named' => 'main']);
-
-// Are there any critical styles to inline?
-// $theme->inlineStyle(['named' => 'critical']);
-
-
 // cleanup head
 remove_action('wp_head', 'adjacent_posts_rel_link');
 remove_action('wp_head', 'feed_links', 2);
@@ -37,13 +23,6 @@ if ($development)
 		$classes[] = 'debugmode';
 		return $classes;
 	});
-
-
-// WPML Setup
-// define('ICL_DONT_LOAD_NAVIGATION_CSS', true);
-// define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);
-// define('ICL_DONT_LOAD_LANGUAGES_JS', true);
-
 
 // Disable Emojis
 function disable_wp_emojicons() {
@@ -69,3 +48,34 @@ function disable_emojicons_tinymce($plugins) {
     return array();
   }
 }
+
+
+// function remove_the_dashboard () {
+//     if (current_user_can('administrator')) {
+//         return;
+//     }
+//     else {
+//         global $menu, $submenu, $user_ID;
+
+//         $the_user = new WP_User($user_ID);
+
+//         reset($menu); $page = key($menu);
+
+//         while ((__('Dashboard') != $menu[$page][0]) && next($menu))
+//             $page = key($menu);
+
+//         if (__('Dashboard') == $menu[$page][0]) unset($menu[$page]);
+
+//         reset($menu); $page = key($menu);
+
+//         while (!$the_user->has_cap($menu[$page][1]) && next($menu))
+//             $page = key($menu);
+
+//         if (preg_match('#wp-admin/?(index.php)?$#',$_SERVER['REQUEST_URI']) && ('index.php' != $menu[$page][2]))
+//             wp_redirect(get_option('siteurl') . '/wp-admin/post-new.php');
+
+
+//     }
+// }
+// add_action('admin_menu', 'remove_the_dashboard');
+
